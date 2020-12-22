@@ -2,20 +2,11 @@
 
 
 {% block body %}
-<h1>mi index</h1>
+<h1>Tipo de Predio</h1>
 
 <form action="" method="get">
-    <input type="submit" value="Traer documento">
+    <input type="submit" name="tipo" formaction="URB" value="Urbano">
+    <input type="submit" name="tipo" formaction="RUR" value="Rural">
 </form>
 
-<button data-page="page1">Page 1</button>
-<button data-page="page2">Page 2</button>
-
-<button onclick="hello()">click here</button>
-
-<div id="page1">
-    <h1>This is page 1.</h1>
-</div>
-<div id="page2">
-    <h1>This is page 2.</h1>
-    {% endblock body %}
+{% endblock body %}

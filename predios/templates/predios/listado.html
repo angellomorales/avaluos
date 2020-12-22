@@ -1,0 +1,20 @@
+{% extends "predios/layout.html" %}
+
+{% block body %}
+
+
+{% if listado %}
+<h1>Predios de {{ listado.first.get_category_display }}</h1>
+{% endif %}
+
+{% for item in listado %}
+<ul>
+    <li><a href="detallado/{{ item.id }}" target="blank">{{ item }}</a></li>
+    {% empty %}
+    <h1>No hay registros disponibles</h1>
+</ul>
+{% endfor %}
+
+<a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Atras</a>
+
+{% endblock body %}

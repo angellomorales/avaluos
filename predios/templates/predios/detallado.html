@@ -1,0 +1,14 @@
+{% extends "predios/layout.html" %}
+
+{% block body %}
+
+{% if predio %}
+
+<h1>detallado del predio {{ predio.id }}</h1>
+<a href="{{ MEDIA_URL }}{{ predio.dataFile }}" target="blank">Descargar</a>
+<a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Atras</a>
+{% else %}
+<h1>El predio no existe</h1>
+{% endif %}
+
+{% endblock body %}
