@@ -11,7 +11,6 @@ def index(request):
 
 def lista(request, tipo_listado):
     if request.method == "GET":
-        tipoLista = request.GET["tipo"]
         listado = Predio.objects.filter(category=tipo_listado)
 
     context = {

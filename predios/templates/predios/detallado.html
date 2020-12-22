@@ -6,9 +6,10 @@
 
 <h1>detallado del predio {{ predio.id }}</h1>
 <a href="{{ MEDIA_URL }}{{ predio.dataFile }}" target="blank">Descargar</a>
-<a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Atras</a>
+<a class="btn btn-primary" href="{% url 'predios:listado' predio.category %}" role="button">Atras</a>
 {% else %}
 <h1>El predio no existe</h1>
+<a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Inicio</a>
 {% endif %}
 
 {% endblock body %}
