@@ -54,7 +54,7 @@ ROOT_URLCONF = 'avaluos.urls'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-MEDIA_URL = '/predios/media/'
+MEDIA_URL = '/media/'
 
 TEMPLATES = [
     {
