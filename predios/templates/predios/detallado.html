@@ -5,8 +5,75 @@
 {% if predio %}
 
 <h1>detallado del predio {{ predio.id }}</h1>
-<a href="{{ MEDIA_URL }}{{ predio.dataFile }}" target="blank">Descargar</a>
-<a class="btn btn-primary" href="{% url 'predios:listado' predio.category %}" role="button">Atras</a>
+<div>
+    <h1>Identificación</h1>
+    <ul>
+        <li>Nombre: {{ predio.nombre }}</li>
+        <li>Cedula catastral: {{ predio.num_cedula_catastral }}</li>
+        <li>Matricula inmoviliaria: {{ predio.num_matricula_inmoviliaria }}</li>
+        <li>Clase de suelo: {{ predio.get_category_display }}</li>
+    </ul>
+</div>
+<div>
+    <h1>Localización</h1>
+    <ul>
+        <li>Departamento: {{ predio.departamento }}</li>
+        <li>Municipio: {{ predio.municipio }}</li>
+        <li>Barrio/ Vereda: {{ predio.barrio_vereda }}</li>
+        <li>Dirección: {{ predio.direccion }}</li>
+    </ul>
+</div>
+<div>
+    <h1>Condición Original</h1>
+    <ul>
+        <li>Estado del folio: {{ predio.get_estado_folio_display }}</li>
+        <li>Fecha de apertura: {{ predio.fecha_apertura| default:"No Registra" }}</li>
+        <li>Documento de radicación: {{ predio.num_documento_radicacion| default:"No Registra" }}</li>
+        <li>Modo de adquisición: {{ predio.condicion_inicial.modo_adquisicion| default:"No Registra" }}</li>
+        <li>Escritura: {{ predio.condicion_inicial.escritura | default:"No Registra"}}</li>
+        <li>Fecha: {{ predio.condicion_inicial.fecha_escritura | default:"No Registra"}}</li>
+        <li>Notaria: {{ predio.condicion_inicial.notaria.nombre| default:"No Registra"  }}</li>
+        <li>Circuito: {{ predio.condicion_inicial.notaria.circuito| default:"No Registra" }}</li>
+        <li>Propietario inicial: {{ predio.condicion_inicial.propietario| default:"No Registra" }}</li>
+        <li>Predio matríz: {{ predio.predio_matriz| default:"No Registra" }}</li>
+        <li>Procede del predio: {{ predio.procede_del_predio| default:"No Registra" }}</li>
+        <li>Área:
+            {% if predio.condicion_inicial.area_hectareas > 0 and  predio.condicion_inicial.area_m2 > 0  %}
+            {{ predio.condicion_inicial.area_hectareas }} hm2 + {{ predio.condicion_inicial.area_m2 }} m2
+            {% elif predio.condicion_inicial.area_hectareas > 0  %}
+            {{ predio.condicion_inicial.area_hectareas }} hm2
+            {% else %}
+            {{ predio.condicion_inicial.area_m2 | default:"No Registra"}} m2
+            {% endif %}
+        </li>
+    </ul>
+</div>
+<div>
+    <h1>Condición Actual</h1>
+    <ul>
+        <li>Propietario Actual: {{ predio.condicion_actual.propietario | default:"No Registra"}}</li>
+        <li>Documento de identidad: {{ predio.condicion_actual.documento_identidad | default:"No Registra"}}</li>
+        <li>Modo de adquisición: {{ predio.condicion_actual.modo_adquisicion | default:"No Registra"}}</li>
+        <li>Escritura: {{ predio.condicion_actual.escritura | default:"No Registra"}}</li>
+        <li>Fecha: {{ predio.condicion_actual.fecha_escritura | default:"No Registra"}}</li>
+        <li>Notaria: {{ predio.condicion_actual.notaria.nombre | default:"No Registra"}}</li>
+        <li>Circuito: {{ predio.condicion_actual.notaria.circuito | default:"No Registra"}}</li>
+        <li>Área:
+            {% if predio.condicion_actual.area_hectareas > 0 and  predio.condicion_actual.area_m2 > 0  %}
+            {{ predio.condicion_actual.area_hectareas }} hm2 + {{ predio.condicion_actual.area_m2 }} m2
+            {% elif predio.condicion_actual.area_hectareas > 0  %}
+            {{ predio.condicion_actual.area_hectareas }} hm2
+            {% else %}
+            {{ predio.condicion_actual.area_m2 | default:"No Registra"}} m2
+            {% endif %}
+        </li>
+        <li>Total anotaciones: {{ predio.total_anotaciones | default:"No Registra"}}</li>
+    </ul>
+</div>
+<div>
+    <a href="{{ MEDIA_URL }}{{ predio.dataFile }}" target="blank">Descargar</a>
+    <a class="btn btn-primary" href="{% url 'predios:listado' predio.category %}" role="button">Atras</a>
+</div>
 {% else %}
 <h1>El predio no existe</h1>
 <a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Inicio</a>
