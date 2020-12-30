@@ -5,15 +5,31 @@
 
 {% if listado %}
 <h1>Predios de {{ listado.first.get_category_display }}</h1>
-{% endif %}
 
-{% for item in listado %}
-<ul>
-    <li><a href="detallado/{{ item.id }}" target="blank">{{ item }}</a></li>
-    {% empty %}
-    <h1>No hay registros disponibles</h1>
-</ul>
-{% endfor %}
+<div>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Barrio / Vereda</th>
+            <th>Detalles</th>
+        </tr>
+
+        {% for item in listado %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>{{ item.direccion }}</td>
+            <td>{{ item.barrio_vereda }}</td>
+            <td><a href="detallado/{{ item.id }}" target="blank">Ver detalles</td>
+        </tr>     
+
+        {% endfor %}
+    </table>
+</div>
+
+{% else %}
+<h1>No hay registros disponibles</h1>
+{% endif %}
 
 <a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Atras</a>
 
