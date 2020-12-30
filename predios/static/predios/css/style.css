@@ -1,6 +1,37 @@
-body {
-    padding: 10px;
+.header-top {
+  background-color: #1d59c9;
 }
-h1{
-    color: blue;
+
+.header-logoGov {
+  width: auto;
+  max-height: 40px;
 }
+
+.header-name {
+  color: #434343;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: Montserrat, sans-serif;
+}
+
+.header-wLogo {
+  width: auto;
+  max-height: 60px;
+}
+
+.wlogo a:link,
+.wlogo a:visited,
+.wlogo a:active,
+.wlogo a:hover {
+  background-color: transparent;
+  cursor: pointer;
+  text-decoration: none;
+  color: #434343;
+  line-height: 2%;
+}
+
+.main-section {
+  padding: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

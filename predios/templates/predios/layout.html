@@ -12,9 +12,26 @@
 </head>
 
 <body>
-    <h1>Predios</h1>
-    {% block body %}
-    {% endblock body %}
+    <header>
+        <div class="header-top">
+            <div class="container-lg">
+                <a class="header-linkWrap" href="https://www.gov.co/" target="_blank"><img class="header-logoGov" alt=""
+                        src="https://www.micolombiadigital.gov.co/sites/superadmin/content/files/000804/40161.jpg"></a>
+            </div>
+        </div>
+        <div class="container-lg my-3 wlogo">
+            <a href="http://www.puertogaitan-meta.gov.co"><img class="header-wLogo" alt="Alcaldía de Puerto Gaitán"
+                    src="http://www.puertogaitan-meta.gov.co/sites/puertogaitanmeta/content/files/000820/40991_escudo_200x200.png"></a>
+            <a href="http://www.puertogaitan-meta.gov.co"><img class="header-wLogo" alt="Alcaldía de Puerto Gaitán"
+                    src="http://www.puertogaitan-meta.gov.co/sites/puertogaitanmeta/content/files/000001/29_bandera_200x200.png"></a>
+            <a class="header-name" href="http://www.puertogaitan-meta.gov.co">Alcaldía de Puerto Gaitán</a>
+        </div>
+    </header>
+    <section class="main-section">
+        {% block body %}
+        {% endblock body %}
+    </section>
+
 </body>
 
 </html>
