@@ -41,4 +41,40 @@
   color: #5C5C5C;
 }
 
+#index-image {
+  object-fit: cover;
+}
+
+.my-card {
+  height: 80vh;
+  min-height: 200px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.my-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-index {
+  border-radius: 30px;
+  width: 7rem;
+  height: 4rem;
+  margin: 2rem;
+  background-color: #094679;
+  border-color: #094679;
+}
+.btn-index:hover {
+  background-color: #052742;
+  border-color: #052742;
+  opacity: 0.6;
+}
+
 /*# sourceMappingURL=style.css.map */

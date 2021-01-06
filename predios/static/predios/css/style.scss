@@ -35,11 +35,56 @@
 
 .main-section {
     padding: 10px;
-    font-family: "Work Sans",sans-serif,sans-serif;
+    font-family: "Work Sans", sans-serif, sans-serif;
     text-rendering: optimizeLegibility;
     min-height: 100vh;
     position: relative;
     display: block;
     overflow-x: hidden;
     color: #5C5C5C;
+}
+
+#index-image {
+    object-fit: cover;
+
+}
+
+.my-card {
+    height: 80vh;
+    min-height: 200px;
+    align-items: center;
+    overflow: hidden;
+}
+
+.my-form {
+    // text-align: center;
+    // align-items: center;
+    // justify-content: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+    // align-items: center;
+
+}
+
+.btn-index {
+    border-radius: 30px;
+    width: 7rem;
+    height: 4rem;
+    margin: 2rem;
+    background-color: #094679;
+    border-color: #094679;
+
+
+    &:hover {
+        background-color: #052742;
+        border-color: #052742;
+        opacity: 0.6;
+    }
+
 }

@@ -2,11 +2,27 @@
 
 
 {% block body %}
-<h1>Tipo de Predio</h1>
 
-<form action="" method="get">
-    <input type="submit" name="tipo" formaction="URB" value="Urbano">
-    <input type="submit" name="tipo" formaction="RUR" value="Rural">
-</form>
+<h1>Tipo de Predio</h1>
+<div class="card bg-dark text-white my-card">
+    <img id="index-image" class="card-img" src="https://images.pexels.com/photos/2679956/pexels-photo-2679956.jpeg"
+        alt="...">
+
+    <div class="card-img-overlay">
+        <div class="card-body">
+            <h5 class="card-title">Selección</h5>
+            <p class="card-text">Seleccione el listado de predios:</p>
+        </div>
+        <div class="my-form">
+            <form method="get">
+                <input id="index-urbano" class="btn btn-primary btn-index" type="submit" name="tipo" formaction="URB"
+                    value="Urbano">
+                <input id="index-rural" class="btn btn-primary btn-index" type="submit" name="tipo" formaction="RUR"
+                    value="Rural">
+            </form>
+        </div>
+    </div>
+</div>
+<button onclick="hello()">click here</button>
 
 {% endblock body %}
