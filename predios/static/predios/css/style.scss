@@ -54,6 +54,9 @@
     min-height: 200px;
     align-items: center;
     overflow: hidden;
+    .card-body{
+        font-size: medium;
+    }
 }
 
 .my-form {
