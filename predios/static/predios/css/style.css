@@ -1,3 +1,14 @@
+.btn-atras, .btn-index {
+  border-radius: 30px;
+  margin: 2rem;
+  background-color: #094679;
+  border-color: #094679;
+}
+.btn-atras:hover, .btn-index:hover {
+  background-color: #052742;
+  border-color: #052742;
+}
+
 .header-top {
   background-color: #1d59c9;
 }
@@ -74,17 +85,17 @@
 }
 
 .btn-index {
-  border-radius: 30px;
   width: 7rem;
   height: 4rem;
-  margin: 2rem;
-  background-color: #094679;
-  border-color: #094679;
 }
 .btn-index:hover {
-  background-color: #052742;
-  border-color: #052742;
   opacity: 0.6;
+}
+
+.btn-atras {
+  width: 7rem;
+  height: 2.5rem;
+  vertical-align: auto;
 }
 
 /*# sourceMappingURL=style.css.map */

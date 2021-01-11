@@ -4,13 +4,13 @@
 
 
 {% if listado %}
-<h1>Predios de {{ listado.first.get_category_display }}</h1>
+<h1>Predios del perímetro {{ listado.first.get_category_display }}</h1>
 
-<div>
-    <table>
+<div class="listado">
+    <table class="table table-striped">
         <tr>
             <th>Nombre</th>
-            <th>Direccion</th>
+            <th>Dirección</th>
             <th>Barrio / Vereda</th>
             <th>Detalles</th>
         </tr>
@@ -31,6 +31,6 @@
 <h1>No hay registros disponibles</h1>
 {% endif %}
 
-<a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Atras</a>
+<a class="btn btn-primary btn-atras" href="{% url 'predios:index' %}" role="button">Atras</a>
 
 {% endblock body %}
