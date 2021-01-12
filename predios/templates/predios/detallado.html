@@ -3,80 +3,204 @@
 {% block body %}
 
 {% if predio %}
-
-<h1>detallado del predio {{ predio.id }}</h1>
-<div>
-    <h1>Identificación</h1>
-    <ul>
-        <li>Nombre: {{ predio.nombre }}</li>
-        <li>Cedula catastral: {{ predio.num_cedula_catastral }}</li>
-        <li>Matricula inmoviliaria: {{ predio.num_matricula_inmoviliaria }}</li>
-        <li>Clase de suelo: {{ predio.get_category_display }}</li>
-    </ul>
+<h1>Información del predio</h1>
+<div class="alert alert-dark my-3 my-title" role="alert">
+    <h2>{{ predio.nombre }}</h2>
 </div>
-<div>
-    <h1>Localización</h1>
-    <ul>
-        <li>Departamento: {{ predio.departamento }}</li>
-        <li>Municipio: {{ predio.municipio }}</li>
-        <li>Barrio/ Vereda: {{ predio.barrio_vereda }}</li>
-        <li>Dirección: {{ predio.direccion }}</li>
-    </ul>
-</div>
-<div>
-    <h1>Condición Original</h1>
-    <ul>
-        <li>Estado del folio: {{ predio.get_estado_folio_display }}</li>
-        <li>Fecha de apertura: {{ predio.fecha_apertura| default:"No Registra" }}</li>
-        <li>Documento de radicación: {{ predio.num_documento_radicacion| default:"No Registra" }}</li>
-        <li>Modo de adquisición: {{ predio.condicion_inicial.modo_adquisicion| default:"No Registra" }}</li>
-        <li>Escritura: {{ predio.condicion_inicial.escritura | default:"No Registra"}}</li>
-        <li>Fecha: {{ predio.condicion_inicial.fecha_escritura | default:"No Registra"}}</li>
-        <li>Notaria: {{ predio.condicion_inicial.notaria.nombre| default:"No Registra"  }}</li>
-        <li>Circuito: {{ predio.condicion_inicial.notaria.circuito| default:"No Registra" }}</li>
-        <li>Propietario inicial: {{ predio.condicion_inicial.propietario| default:"No Registra" }}</li>
-        <li>Predio matríz: {{ predio.predio_matriz| default:"No Registra" }}</li>
-        <li>Procede del predio: {{ predio.procede_del_predio| default:"No Registra" }}</li>
-        <li>Área:
-            {% if predio.condicion_inicial.area_hectareas > 0 and  predio.condicion_inicial.area_m2 > 0  %}
-            {{ predio.condicion_inicial.area_hectareas }} hm2 + {{ predio.condicion_inicial.area_m2 }} m2
-            {% elif predio.condicion_inicial.area_hectareas > 0  %}
-            {{ predio.condicion_inicial.area_hectareas }} hm2
-            {% else %}
-            {{ predio.condicion_inicial.area_m2 | default:"No Registra"}} m2
-            {% endif %}
-        </li>
-    </ul>
-</div>
-<div>
-    <h1>Condición Actual</h1>
-    <ul>
-        <li>Propietario Actual: {{ predio.condicion_actual.propietario | default:"No Registra"}}</li>
-        <li>Documento de identidad: {{ predio.condicion_actual.documento_identidad | default:"No Registra"}}</li>
-        <li>Modo de adquisición: {{ predio.condicion_actual.modo_adquisicion | default:"No Registra"}}</li>
-        <li>Escritura: {{ predio.condicion_actual.escritura | default:"No Registra"}}</li>
-        <li>Fecha: {{ predio.condicion_actual.fecha_escritura | default:"No Registra"}}</li>
-        <li>Notaria: {{ predio.condicion_actual.notaria.nombre | default:"No Registra"}}</li>
-        <li>Circuito: {{ predio.condicion_actual.notaria.circuito | default:"No Registra"}}</li>
-        <li>Área:
-            {% if predio.condicion_actual.area_hectareas > 0 and  predio.condicion_actual.area_m2 > 0  %}
-            {{ predio.condicion_actual.area_hectareas }} hm2 + {{ predio.condicion_actual.area_m2 }} m2
-            {% elif predio.condicion_actual.area_hectareas > 0  %}
-            {{ predio.condicion_actual.area_hectareas }} hm2
-            {% else %}
-            {{ predio.condicion_actual.area_m2 | default:"No Registra"}} m2
-            {% endif %}
-        </li>
-        <li>Total anotaciones: {{ predio.total_anotaciones | default:"No Registra"}}</li>
-    </ul>
-</div>
-<div>
-    <a href="{{ MEDIA_URL }}{{ predio.dataFile }}" target="blank">Descargar</a>
-    <a class="btn btn-primary" href="{% url 'predios:listado' predio.category %}" role="button">Atras</a>
+<div class="container">
+    <div>
+        <table class="table table-hover table-detalle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" colspan="2">
+                        <h1>Identificación</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Nombre:</span> {{ predio.nombre }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Cedula catastral:</span>
+                        {{ predio.num_cedula_catastral }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Matrícula inmoviliaria: </span>
+                        {{ predio.num_matricula_inmoviliaria }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Clase de suelo:</span> {{ predio.get_category_display }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="table table-hover table-detalle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" colspan="2">
+                        <h1>Localización</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Departamento:</span> {{ predio.departamento }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Municipio:</span> {{ predio.municipio }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Barrio/ Vereda:</span> {{ predio.barrio_vereda }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Dirección:</span> {{ predio.direccion }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="table table-hover table-detalle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" colspan="2">
+                        <h1>Condición Original</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Estado del folio:</span>
+                        {{ predio.get_estado_folio_display }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Fecha de apertura:</span>
+                        {{ predio.fecha_apertura| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Documento de radicación:</span>
+                        {{ predio.num_documento_radicacion| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Modo de adquisición:</span>
+                        {{ predio.condicion_inicial.modo_adquisicion| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Escritura:</span>
+                        {{ predio.condicion_inicial.escritura | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Fecha:</span>
+                        {{ predio.condicion_inicial.fecha_escritura | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Notaria:</span>
+                        {{ predio.condicion_inicial.notaria.nombre| default:"No Registra"  }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Circuito:</span>
+                        {{ predio.condicion_inicial.notaria.circuito| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Propietario inicial:</span>
+                        {{ predio.condicion_inicial.propietario| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Predio matríz:</span>
+                        {{ predio.predio_matriz| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Procede del predio:</span>
+                        {{ predio.procede_del_predio| default:"No Registra" }}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Área:</span>
+                        {% if predio.condicion_inicial.area_hectareas > 0 and  predio.condicion_inicial.area_m2 > 0  %}
+                        {{ predio.condicion_inicial.area_hectareas }} hm2 + {{ predio.condicion_inicial.area_m2 }} m2
+                        {% elif predio.condicion_inicial.area_hectareas > 0  %}
+                        {{ predio.condicion_inicial.area_hectareas }} hm2
+                        {% else %}
+                        {{ predio.condicion_inicial.area_m2 | default:"No Registra"}} m2
+                        {% endif %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <table class="table table-hover table-detalle">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col" colspan="2">
+                        <h1>Condición Actual</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Propietario Actual:</span>
+                        {{ predio.condicion_actual.propietario | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Documento de identidad:</span>
+                        {{ predio.condicion_actual.documento_identidad | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Modo de adquisición:</span>
+                        {{ predio.condicion_actual.modo_adquisicion | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Escritura:</span>
+                        {{ predio.condicion_actual.escritura | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Fecha:</span>
+                        {{ predio.condicion_actual.fecha_escritura | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Notaria:</span>
+                        {{ predio.condicion_actual.notaria.nombre | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Circuito:</span>
+                        {{ predio.condicion_actual.notaria.circuito | default:"No Registra"}}</td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Área:</span>
+                        {% if predio.condicion_actual.area_hectareas > 0 and  predio.condicion_actual.area_m2 > 0  %}
+                        {{ predio.condicion_actual.area_hectareas }} hm2 + {{ predio.condicion_actual.area_m2 }} m2
+                        {% elif predio.condicion_actual.area_hectareas > 0  %}
+                        {{ predio.condicion_actual.area_hectareas }} hm2
+                        {% else %}
+                        {{ predio.condicion_actual.area_m2 | default:"No Registra"}} m2
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="badge bg-light text-dark">Total anotaciones:</span>
+                        {{ predio.total_anotaciones | default:"No Registra"}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div class="wdescarga mt-5">
+            <a href="{{ MEDIA_URL }}{{ predio.dataFile }}" target="blank">
+                <img src="http://www.puertogaitan-meta.gov.co/content/images/i-pdf.png"
+                    alt="">Descargar
+            </a>
+        </div>
+        <div>
+            <a class="btn btn-primary btn-atras" href="{% url 'predios:listado' predio.category %}"
+                role="button">Atras</a>
+        </div>
+    </div>
 </div>
 {% else %}
 <h1>El predio no existe</h1>
-<a class="btn btn-primary" href="{% url 'predios:index' %}" role="button">Inicio</a>
+<a class="btn btn-primary btn-atras" href="{% url 'predios:index' %}" role="button">Inicio</a>
 {% endif %}
 
 {% endblock body %}

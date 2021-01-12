@@ -11,6 +11,18 @@
     }
 }
 
+%hyperlink {
+
+    a:link,
+    a:visited {
+        background-color: transparent;
+        cursor: pointer;
+        color: #434343;
+        line-height: 2%;
+        text-decoration: none;
+    }
+}
+
 .header-top {
     background-color: rgb(29, 89, 201);
 }
@@ -33,16 +45,12 @@
 }
 
 .wlogo {
+    @extend %hyperlink;
 
-    a:link,
     a:visited,
     a:active,
     a:hover {
-        background-color: transparent;
-        cursor: pointer;
         text-decoration: none;
-        color: #434343;
-        line-height: 2%;
     }
 }
 
@@ -118,4 +126,43 @@
     width: 7rem;
     height: 2.5rem;
     vertical-align: auto;
+}
+
+.wdescarga {
+    @extend %hyperlink;
+    text-align: center;
+
+    a:visited,
+    a:active,
+    a:hover {
+        text-decoration: underline;
+    }
+
+    img {
+        width: auto;
+        max-height: 40px;
+    }
+}
+
+.my-title {
+    text-align: center;
+    background-color: #094679;
+    color: white;
+}
+
+.table-detalle {
+
+    th {
+        color: #434343;
+        text-align: left;
+    }
+
+    td {
+        color: #5C5C5C;
+
+        span {
+            font-size: medium;
+            color: #434343;
+        }
+    }
 }
