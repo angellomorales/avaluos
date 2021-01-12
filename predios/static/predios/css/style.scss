@@ -1,3 +1,4 @@
+//-------------------variables----------------------------
 %btn-template {
     border-radius: 30px;
     margin: 2rem;
@@ -23,6 +24,50 @@
     }
 }
 
+//----------------------animaciones------------------------------
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+@mixin animate($name, $duration, $playState, $fill-mode) {
+    animation-duration: $duration;
+    animation-play-state: $playState;
+    animation-name: $name;
+    animation-fill-mode: $fill-mode;
+}
+
+@include keyframes(efectosDesaparecer) {
+    from {
+        opacity: 1;
+        margin-left: 0%;
+    }
+
+    to {
+        opacity: 0;
+        margin-left: 100%;
+    }
+}
+
+
+@mixin desaparecer {
+    @include animate(efectosDesaparecer, 1s, paused, forwards);
+}
+
+//--------------------css-----------------------------
 .header-top {
     background-color: rgb(29, 89, 201);
 }
@@ -66,8 +111,13 @@
 }
 
 #index-image {
+    
     object-fit: cover;
 
+}
+.animate-img{
+    @include desaparecer;
+    position: relative;
 }
 
 .my-card {
